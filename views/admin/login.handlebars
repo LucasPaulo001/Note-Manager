@@ -1,0 +1,25 @@
+{{!-- Tela de login --}}
+<div class="container">
+    <div class="content login">
+        <h1>Faça o seu login</h1>
+        <form action="/admin/login" method="post">
+            <div class="itemForm">
+                <label for="email">E-mail</label>
+                <input type="text" name="email" id="email" placeholder="Insira seu email">
+            </div>
+    
+            <div class="itemForm">
+                <label for="senha">Senha</label>
+                <input type="password" name="password" id="senha" placeholder="Insira sua senha">
+            </div>
+    
+            <div class="btnCad">
+                <button class="btn btn-login" type="submit">Login</button>
+            </div>
+        </form>
+        <div class="btn-cad">
+            <a href="/admin/cadastro"><button class="btn">Cadastrar</button></a>
+        </div>
+    </div>
+    
+</div>

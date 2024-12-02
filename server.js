@@ -3,6 +3,8 @@ const express = require('express')
 const handlebars = require('express-handlebars')
 const mongoose = require('mongoose')
 const path = require('path')
+const admin = require('./routes/admin')
+const session = require('express-session')
 
 //Configurações
     //express
@@ -14,7 +16,7 @@ const path = require('path')
 
     //handlebars
         app.engine('handlebars', handlebars.engine({defaultLayout: 'main'}))
-        app.set('view engine', 'handlebalrs')
+        app.set('view engine', 'handlebars')
         app.set('views', __dirname + '/views')
 
     //Configuração do mongoose (conexão ao banco de dados - appnotas)
@@ -24,7 +26,19 @@ const path = require('path')
             console.log(`Erro ao se conectar com o mongodb, erro: ${error}`)
         })
 
+    //Configuração da pasta public
+    app.use(express.static(path.join(__dirname, 'public')))
+
+    // Configuração do session
+    app.use(session({
+        secret: 'nadademaisaquiapenasalgosecreto',
+        resave: false,
+        saveUninitialized: true,
+        cookie: { secure: false } // Para ambientes de desenvolvimento, defina como false
+    }));
+
     //rotas
+    app.use('/admin', admin)
 
 //Conexão com o servidor express
 const PORT = 8081
