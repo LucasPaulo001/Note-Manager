@@ -1,6 +1,6 @@
-const bcrypt = require('bcryptjs');
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const bcrypt = require('bcryptjs'); //requisição para o módulo de criptografia de senhas
+const mongoose = require('mongoose');//requisição para o módulo de conexão com o banco de dados
+const Schema = mongoose.Schema;//armazena a biblioteca do schema para podermos criar os moldes de armazenamento no banco de dados
 
 // Definição do schema de usuário
 const UserSchema = new Schema({

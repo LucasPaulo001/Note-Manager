@@ -4,17 +4,15 @@ const route = express.Router()
 require('../models/User')
 const path = require('path')
 const User = mongoose.model('User')
-const pathLocal = path.join(__dirname, 'public', 'home.html')
 const bcrypt = require('bcryptjs')
 const session = require('express-session')
 
-console.log(pathLocal)
 //rotas
-    route.get('/admin', (req, res) => {
+    route.get('/admin/home', (req, res) => {
 
         // Passando o nome do usuário para a página
         if (req.session.user) {
-            res.render('admin/home', { nome: req.session.user });
+            res.redirect('admin/home', { nome: "teste" });
         } else {
             res.redirect('/login'); // Caso o usuário não esteja logado, redireciona para o login
         }
@@ -48,7 +46,7 @@ console.log(pathLocal)
             
             req.session.user = user.nome;
             
-            res.render('admin/home')
+            res.redirect('/admin/home');
         } catch (error) {
             res.status(500).send('Erro ao fazer login: ' + error.message);
         }

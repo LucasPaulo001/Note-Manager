@@ -19,6 +19,10 @@ const session = require('express-session')
         app.set('view engine', 'handlebars')
         app.set('views', __dirname + '/views')
 
+    //views
+        app.set('views', path.join(__dirname, 'views'));
+        app.set('view engine', 'handlebars');
+
     //Configuração do mongoose (conexão ao banco de dados - appnotas)
         mongoose.connect('mongodb://localhost/appnotas').then(() => {
             console.log("Conectado ao mongodb")
